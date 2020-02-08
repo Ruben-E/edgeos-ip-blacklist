@@ -22,23 +22,17 @@ a zone-based firewall might look like:
 1. `set firewall name WAN_IN rule 1 source group network-group Nets4-BlackList`  
 2. `set firewall name WAN_IN rule 1 action drop`
 3. `set firewall name WAN_IN rule 1 protocol all`
-4. `set firewall name wan-lan-4 rule 1 source group network-group Nets4-BlackList`  
-5. `set firewall name wan-lan-4 rule 1 action drop`  
-6. `set firewall name wan-lan-4 rule 1 protocol all`  
-7. `set firewall name wan-self-4 rule 1 source group network-group Nets4-BlackList`  
-8. `set firewall name wan-self-4 rule 1 action drop`  
-9. `set firewall name wan-self-4 rule 1 protocol all`  
+4. `set firewall name WAN_LOCAL rule 1 source group network-group Nets4-BlackList`  
+5. `set firewall name WAN_LOCAL rule 1 action drop`  
+6. `set firewall name WAN_LOCAL rule 1 protocol all`
 
 Similar for IPv6:
 1. `set firewall ipv6-name WANv6_IN rule 1 source group ipv6-network-group Nets6-BlackList`  
 2. `set firewall ipv6-name WANv6_IN rule 1 action drop`  
 3. `set firewall ipv6-name WANv6_IN rule 1 protocol all`  
-4. `set firewall ipv6-name wan-lan-6 rule 1 source group ipv6-network-group Nets6-BlackList`  
-5. `set firewall ipv6-name wan-lan-6 rule 1 action drop`  
-6. `set firewall ipv6-name wan-lan-6 rule 1 protocol all`  
-7. `set firewall ipv6-name wan-self-6 rule 1 source group ipv6-network-group Nets6-BlackList`  
-8. `set firewall ipv6-name wan-self-6 rule 1 action drop`  
-9. `set firewall ipv6-name wan-self-6 rule 1 protocol all`  
+4. `set firewall ipv6-name WANv6_LOCAL rule 1 source group ipv6-network-group Nets6-BlackList`  
+5. `set firewall ipv6-name WANv6_LOCAL rule 1 action drop`  
+6. `set firewall ipv6-name WANv6_LOCAL rule 1 protocol all`
 
 To use the optional `iprange` for optimization and reduction you will need to install the
 binary.  There is an existing iprange .deb package for both mips and mipsel that
@@ -48,11 +42,11 @@ may be used.
     1.  `mkdir -p /config/data/firstboot/install-packages`
     2.  `cd /config/data/firstboot/install-packages`
     3.  For Cavium-based platforms (MIPS):
-        1.  `curl -O http://http.us.debian.org/debian/pool/main/i/iprange/iprange_1.0.3+ds-1_mips.deb`
-        2.  `sudo dpkg --install iprange_1.0.3+ds-1_mips.deb`
+        1.  `curl -O http://http.us.debian.org/debian/pool/main/i/iprange/iprange_1.0.4+ds-2_mips.deb`
+        2.  `sudo dpkg --install iprange_1.0.4+ds-2_mips.deb`
     4.  For MTK-based platforms (MIPSEL; including ER-X, ER-X-SFP, EP-R6):
-        1.  `curl -O http://http.us.debian.org/debian/pool/main/i/iprange/iprange_1.0.3+ds-1_mipsel.deb`
-        2.  `sudo dpkg --install iprange_1.0.3+ds-1_mipsel.deb`
+        1.  `curl -O http://http.us.debian.org/debian/pool/main/i/iprange/iprange_1.0.4+ds-2_mipsel.deb`
+        2.  `sudo dpkg --install iprange_1.0.4+ds-2_mipsel.deb`
 
 That should get you going with minimal effort.  However, you really should
 review `fw-BlackList-URLs.txt` and edit as appropriate.  The two scripts
